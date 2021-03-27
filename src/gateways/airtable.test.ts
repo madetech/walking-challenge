@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 import { getLeaderboard } from "./airtable";
 
-jest.mock('axios');
+jest.mock("axios");
 
 describe("airtable", () => {
   const expectation = [
@@ -56,14 +56,16 @@ describe("airtable", () => {
   ];
   const mockApiResponse = {
     data: {
-      records: expectation
-    }
-  }
+      records: expectation,
+    },
+  };
 
   const mockedAxios = axios as jest.Mocked<typeof axios>;
 
   it("returns the response", async () => {
-    mockedAxios.get.mockImplementationOnce(() => Promise.resolve(mockApiResponse));
+    mockedAxios.get.mockImplementationOnce(() =>
+      Promise.resolve(mockApiResponse)
+    );
     const response = await getLeaderboard();
     expect(response).toStrictEqual(expectation);
   });
