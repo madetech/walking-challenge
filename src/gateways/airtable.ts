@@ -23,13 +23,14 @@ interface ResponseInterface {
 export const getLeaderboard = async () => {
   try {
     const response: ResponseInterface = await axios.get(
-      "https://api.airtable.com/v0/appXKOOJYsSOmdSwD/Leaderboard?sort%5B0%5D%5Bfield%5D=total&sort%5B0%5D%5Bdirection%5D=desc",
+      "https://api.airtable.com/v0/appXKOOJYsSOmdSwD/Leaderboard",
       {
         headers: {
           Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
         },
       }
     );
+
     return response.data.records;
   } catch (error) {
     console.warn(error);
