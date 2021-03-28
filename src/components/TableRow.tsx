@@ -1,3 +1,5 @@
+import './TableRow.css';
+
 export interface TableRowProps {
   rowData: {
     teamName: string;
@@ -13,7 +15,7 @@ const TableRow = ({ rowData }: TableRowProps) => {
   const { week1, week2, week3, week4, total } = sanitisedFigures(rowData);
   return (
     <tr data-test={rowData.teamName}>
-      <td data-test="team-name">{`${rowData.teamName}`}</td>
+      <td data-test="team-name" className='team-cell'>{`${rowData.teamName}`}</td>
       <td data-test="week-1">{week1}</td>
       <td data-test="week-2">{week2}</td>
       <td data-test="week-3">{week3}</td>

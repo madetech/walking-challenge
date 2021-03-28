@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Record } from "../gateways/airtable";
 import getTableValues from "../usecases/getTableValues";
 import TableRow from "./TableRow";
+import './ResultsTable.css';
 
 const ResultsTable = () => {
   const [tableValues, setTableValues] = useState<Record[]>([]);
@@ -13,7 +14,7 @@ const ResultsTable = () => {
   generateTableRows(tableValues, rows);
   return (
     <table>
-      <tr>
+      <tr className="header-row">
         <th>Team</th>
         <th>Week 1</th>
         <th>Week 2</th>
