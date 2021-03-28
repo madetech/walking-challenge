@@ -14,6 +14,7 @@ describe("airtable", () => {
         "Week 2 (km)": 12,
         "Week 3 (km)": 2,
         "Week 4 (km)": 100,
+        "total": 170
       },
       id: "rec5ecRyl8vX0p6f2",
     },
@@ -26,6 +27,7 @@ describe("airtable", () => {
         "Week 2 (km)": 110.945,
         "Week 3 (km)": 13.45,
         "Week 4 (km)": 31.23,
+        "total": 220.945
       },
       id: "rec8tPxPIlPHMsI6Q",
     },
@@ -38,6 +40,7 @@ describe("airtable", () => {
         "Week 2 (km)": 43,
         "Week 3 (km)": 44,
         "Week 4 (km)": 45,
+        "total": 130
       },
       id: "recPRbhqslrKlWQ2h",
     },
@@ -50,6 +53,7 @@ describe("airtable", () => {
         "Week 2 (km)": 101,
         "Week 3 (km)": 23.45,
         "Week 4 (km)": 100,
+        "total": 123
       },
       id: "recdAbXFcs7FedAoq",
     },

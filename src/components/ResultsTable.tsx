@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import getTableValues from "../usecases/getLeaderboard";
+import { Record } from "../gateways/airtable";
+import getTableValues from "../usecases/getTableValues";
 import TableRow from "./TableRow";
 
 const ResultsTable = () => {
-  const [tableValues, setTableValues] = useState([]);
+  const [tableValues, setTableValues] = useState<Record[]>([]);
 
   useEffect(() => {
     getTableValues().then((result) => setTableValues(result));
@@ -25,8 +26,8 @@ const ResultsTable = () => {
   );
 };
 
-function generateTableRows(tableValues: never[], rows: JSX.Element[]) {
-  tableValues.forEach((row: { fields: { [x: string]: any } }) => {
+const generateTableRows = (tableValues: Record[], rows: JSX.Element[]) => {
+  tableValues.forEach((row) => {
     rows.push(
       <TableRow
         rowData={{
@@ -35,6 +36,7 @@ function generateTableRows(tableValues: never[], rows: JSX.Element[]) {
           week2: row.fields["Week 2 (km)"],
           week3: row.fields["Week 3 (km)"],
           week4: row.fields["Week 4 (km)"],
+          total: row.fields.total,
         }}
       />
     );
