@@ -5,7 +5,11 @@ const getTableValues = async () => {
   const data = await getLeaderboard();
   let teamData: Record[] = [];
   sumTeamData(data, teamData);
-  return teamData;
+
+  let orderedData: Record[] = [];
+  orderedData = teamData.sort(compare);
+  
+  return orderedData;
 };
 
 function sumTeamData(data: Record[], teamData: Record[]) {
@@ -23,6 +27,19 @@ function sumTeamData(data: Record[], teamData: Record[]) {
       teamData.push(row);
     }
   });
+}
+
+const compare = (a: Record, b: Record) => {
+  const teamA = a.fields.total
+  const teamB = b.fields.total
+
+  let comparison = 0;
+  if (teamA < teamB) {
+    comparison = 1;
+  } else if (teamA > teamB) {
+    comparison = -1;
+  }
+  return comparison;
 }
 
 export default getTableValues;
