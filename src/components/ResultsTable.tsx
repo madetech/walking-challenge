@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Record } from "../gateways/airtable";
 import getTableValues from "../usecases/getTableValues";
 import TableRow from "./TableRow";
-import './ResultsTable.css';
+import "./ResultsTable.css";
+import { Table } from "react-bootstrap";
 
 const ResultsTable = () => {
   const [tableValues, setTableValues] = useState<Record[]>([]);
@@ -13,17 +14,21 @@ const ResultsTable = () => {
   let rows: JSX.Element[] = [];
   generateTableRows(tableValues, rows);
   return (
-    <table>
-      <tr className="header-row">
-        <th>Team</th>
-        <th>Week 1</th>
-        <th>Week 2</th>
-        <th>Week 3</th>
-        <th>Week 4</th>
-        <th>Total</th>
-      </tr>
-      {rows}
-    </table>
+    <Table>
+      <thead>
+        <tr className="header-row">
+          <th>Team</th>
+          <th>Week 1</th>
+          <th>Week 2</th>
+          <th>Week 3</th>
+          <th>Week 4</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows}
+      </tbody>
+    </Table>
   );
 };
 
@@ -42,6 +47,6 @@ const generateTableRows = (tableValues: Record[], rows: JSX.Element[]) => {
       />
     );
   });
-}
+};
 
 export default ResultsTable;
