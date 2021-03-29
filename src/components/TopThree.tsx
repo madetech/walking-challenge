@@ -12,15 +12,21 @@ const TopThree = ({ tableValues }: TopThreeProps) => {
       <div className="ranking">
         <Row>
           <Col>
-            <div id="first">🥇 1st Place: {tableValues[0].fields["Team Name"]}</div>
+            <div id="first">
+              🥇 1st Place: <span className="team-name">{tableValues[0].fields["Team Name"]}</span>
+            </div>
           </Col>
         </Row>
         <Row>
           <Col>
-            <div id="second">🥈 2nd Place: {tableValues[1].fields["Team Name"]}</div>
+            <div id="second">
+              🥈 2nd Place: <span className="team-name">{tableValues[1].fields["Team Name"]}</span>
+            </div>
           </Col>
           <Col>
-            <div id="third">🥉 3rd Place: {tableValues[2].fields["Team Name"]}</div>
+            <div id="third">
+              🥉 3rd Place: <span className="team-name">{tableValues[2].fields["Team Name"]}</span>
+            </div>
           </Col>
         </Row>
       </div>

@@ -1,15 +1,19 @@
 #first {
-    text-align: center;
+  text-align: center;
 }
 
 #second {
-    text-align: right;
+  text-align: right;
 }
 
 #third {
-    text-align: left;
+  text-align: left;
 }
 
 .ranking {
-    padding: 1em;
+  padding: 1em;
+}
+
+.team-name {
+  font-weight: bold;
 }
