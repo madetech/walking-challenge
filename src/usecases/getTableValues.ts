@@ -1,22 +1,34 @@
 import { getLeaderboard } from "../gateways/airtable";
 import { Record } from "../gateways/airtable";
 
-const getTableValues = async () => {
+interface GetTableValuesReturn {
+  individualData: Record[];
+  orderedTeamData: Record[];
+}
+
+const getTableValues = async (): Promise<GetTableValuesReturn> => {
   const data = await getLeaderboard();
   let teamData: Record[] = [];
   sumTeamData(data, teamData);
 
   let orderedData: Record[] = [];
   orderedData = teamData.sort(compare);
-  
-  return orderedData;
+
+  return {
+    individualData: data,
+    orderedTeamData: orderedData,
+  };
 };
 
 function sumTeamData(data: Record[], teamData: Record[]) {
   data.forEach((row) => {
     const teamName = row.fields["Team Name"];
-    const obj = teamData.find(object => object.fields["Team Name"] === teamName);
-    const index = teamData.findIndex(object => object.fields["Team Name"] === teamName);
+    const obj = teamData.find(
+      (object) => object.fields["Team Name"] === teamName
+    );
+    const index = teamData.findIndex(
+      (object) => object.fields["Team Name"] === teamName
+    );
     if (obj) {
       teamData[index].fields["Week 1 (km)"] += row.fields["Week 1 (km)"];
       teamData[index].fields["Week 2 (km)"] += row.fields["Week 2 (km)"];
@@ -30,8 +42,8 @@ function sumTeamData(data: Record[], teamData: Record[]) {
 }
 
 const compare = (a: Record, b: Record) => {
-  const teamA = a.fields.total
-  const teamB = b.fields.total
+  const teamA = a.fields.total;
+  const teamB = b.fields.total;
 
   let comparison = 0;
   if (teamA < teamB) {
@@ -40,6 +52,6 @@ const compare = (a: Record, b: Record) => {
     comparison = -1;
   }
   return comparison;
-}
+};
 
 export default getTableValues;

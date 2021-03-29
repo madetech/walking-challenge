@@ -1,16 +1,13 @@
-import { useEffect, useState } from "react";
 import { Record } from "../gateways/airtable";
-import getTableValues from "../usecases/getTableValues";
 import TableRow from "./TableRow";
 import "./ResultsTable.css";
 import { Table } from "react-bootstrap";
 
-const ResultsTable = () => {
-  const [tableValues, setTableValues] = useState<Record[]>([]);
+interface ResultsTableProps {
+  tableValues: Record[];
+}
 
-  useEffect(() => {
-    getTableValues().then((result) => setTableValues(result));
-  }, []);
+const ResultsTable = ({ tableValues }: ResultsTableProps) => {
   let rows: JSX.Element[] = [];
   generateTableRows(tableValues, rows);
   return (
@@ -25,9 +22,7 @@ const ResultsTable = () => {
           <th>Total (km)</th>
         </tr>
       </thead>
-      <tbody>
-        {rows}
-      </tbody>
+      <tbody>{rows}</tbody>
     </Table>
   );
 };
