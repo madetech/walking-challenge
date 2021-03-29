@@ -30,6 +30,17 @@ const App = () => {
           <ResultsTable tableValues={tableValues} />
         </Col>
       </Row>
+      <Row>
+        <Col>
+          <a
+            href="https://airtable.com/tbl4avcoqiDB3hTv2/viwWNk8aHvdMW87Xq?blocks=hide"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Add your scores
+          </a>
+        </Col>
+      </Row>
     </Container>
   );
 };
