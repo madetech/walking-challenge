@@ -18,11 +18,11 @@ const ResultsTable = () => {
       <thead>
         <tr className="header-row">
           <th>Team</th>
-          <th>Week 1</th>
-          <th>Week 2</th>
-          <th>Week 3</th>
-          <th>Week 4</th>
-          <th>Total</th>
+          <th>Week 1 (km)</th>
+          <th>Week 2 (km)</th>
+          <th>Week 3 (km)</th>
+          <th>Week 4 (km)</th>
+          <th>Total (km)</th>
         </tr>
       </thead>
       <tbody>
