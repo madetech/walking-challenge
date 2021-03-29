@@ -1,0 +1,15 @@
+#first {
+    text-align: center;
+}
+
+#second {
+    text-align: right;
+}
+
+#third {
+    text-align: left;
+}
+
+.ranking {
+    padding: 1em;
+}
