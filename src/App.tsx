@@ -9,10 +9,33 @@ import { UpdatedRecord } from "./interfaces/record";
 
 const App = () => {
   const [tableValues, setTableValues] = useState<UpdatedRecord[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    getTableValues().then((result) => setTableValues(result));
+    getTableValues()
+      .then((result) => setTableValues(result))
+      .then(() => setLoading(false));
   }, []);
+
+  if (loading) {
+    return (
+      <Container fluid>
+        <Row className="header">
+          <Col>
+            <img src={logo} alt="Made Tech Logo" className="logo" />
+          </Col>
+          <Col>
+            <h1 className="title">Walking Challenge: April 2021</h1>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <p>Loading...</p>
+          </Col>
+        </Row>
+      </Container>
+    );
+  }
 
   return (
     <Container fluid>
