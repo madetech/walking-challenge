@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ApiRecord } from "../interfaces/record";
 
 export interface Record {
     createdTime: string;
@@ -16,7 +17,7 @@ export interface Record {
 
 interface ResponseInterface {
   data: {
-    records: Record[];
+    records: ApiRecord[];
   };
 }
 

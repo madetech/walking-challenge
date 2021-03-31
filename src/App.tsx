@@ -4,14 +4,14 @@ import TopThree from "./components/TopThree";
 import logo from "./assets/made-tech-logo.png";
 import "./App.css";
 import { useEffect, useState } from "react";
-import { Record } from "./gateways/airtable";
 import getTableValues from "./usecases/getTableValues";
+import { UpdatedRecord } from "./interfaces/record";
 
 const App = () => {
-  const [tableValues, setTableValues] = useState<Record[]>([]);
+  const [tableValues, setTableValues] = useState<UpdatedRecord[]>([]);
 
   useEffect(() => {
-    getTableValues().then((result) => setTableValues(result.orderedTeamData));
+    getTableValues().then((result) => setTableValues(result));
   }, []);
 
   return (

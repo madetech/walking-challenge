@@ -1,26 +1,19 @@
 import { getLeaderboard } from "../gateways/airtable";
 import { Record } from "../gateways/airtable";
+import { UpdatedRecord } from "../interfaces/record";
 
-interface GetTableValuesReturn {
-  individualData: Record[];
-  orderedTeamData: Record[];
-}
-
-const getTableValues = async (): Promise<GetTableValuesReturn> => {
+const getTableValues = async () => {
   const data = await getLeaderboard();
-  let teamData: Record[] = [];
+  let teamData: UpdatedRecord[] = [];
   sumTeamData(data, teamData);
 
-  let orderedData: Record[] = [];
+  let orderedData: UpdatedRecord[] = [];
   orderedData = teamData.sort(compare);
 
-  return {
-    individualData: data,
-    orderedTeamData: orderedData,
-  };
+  return orderedData;
 };
 
-function sumTeamData(data: Record[], teamData: Record[]) {
+function sumTeamData(data: Record[], teamData: UpdatedRecord[]) {
   data.forEach((row) => {
     const teamName = row.fields["Team Name"];
     const obj = teamData.find(
@@ -35,8 +28,23 @@ function sumTeamData(data: Record[], teamData: Record[]) {
       teamData[index].fields["Week 3 (km)"] += row.fields["Week 3 (km)"];
       teamData[index].fields["Week 4 (km)"] += row.fields["Week 4 (km)"];
       teamData[index].fields["total"] += row.fields["total"];
+      teamData[index].fields["Walkers"].push(row.fields["Walker"])
     } else {
-      teamData.push(row);
+      const mappedRecord: UpdatedRecord = {
+        createdTime: row.createdTime,
+        fields: {
+          "Team Name": row.fields["Team Name"],
+          Walker: row.fields.Walker,
+          "Week 1 (km)": row.fields["Week 1 (km)"],
+          "Week 2 (km)": row.fields["Week 2 (km)"],
+          "Week 3 (km)": row.fields["Week 3 (km)"],
+          "Week 4 (km)": row.fields["Week 4 (km)"],
+          total: row.fields.total,
+          Walkers: [row.fields.Walker],
+        },
+        id: row.id,
+      }
+      teamData.push(mappedRecord);
     }
   });
 }

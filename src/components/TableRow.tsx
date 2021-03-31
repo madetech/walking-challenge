@@ -1,3 +1,4 @@
+import { Container, Row } from 'react-bootstrap';
 import './TableRow.css';
 
 export interface TableRowProps {
@@ -8,14 +9,23 @@ export interface TableRowProps {
     week3: number;
     week4: number;
     total: number;
+    walkers: string[];
   };
 }
 
 const TableRow = ({ rowData }: TableRowProps) => {
   const { week1, week2, week3, week4, total } = sanitisedFigures(rowData);
+  const teamData = () => {
+    return (
+      <Container>
+        <Row><span className="team-name">{rowData.teamName}</span></Row>
+        <Row><span>{rowData.walkers[0]} and {rowData.walkers[1]}</span></Row>
+      </Container>
+    )
+  }
   return (
     <tr data-test={rowData.teamName}>
-      <td data-test="team-name" className='team-cell'>{`${rowData.teamName}`}</td>
+      <td data-test="team-name" className='team-cell'>{teamData()}</td>
       <td data-test="week-1">{week1}</td>
       <td data-test="week-2">{week2}</td>
       <td data-test="week-3">{week3}</td>

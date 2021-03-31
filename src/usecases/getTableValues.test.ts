@@ -1,5 +1,6 @@
 import getTableValues from "./getTableValues";
 import { getLeaderboard, Record } from "../gateways/airtable";
+import { UpdatedRecord } from "../interfaces/record";
 
 jest.mock("../gateways/airtable");
 
@@ -42,51 +43,22 @@ describe("getTableValues", () => {
       },
     ];
 
-    const expectedResult = {
-      individualData: [
-        {
-          createdTime: "2021-03-25T16:53:14.000Z",
-          fields: {
-            "Team Name": "Doggos",
-            Walker: "Betty",
-            "Week 1 (km)": 198.43,
-            "Week 2 (km)": 211.945,
-            "Week 3 (km)": 36.9,
-            "Week 4 (km)": 131.23,
-            total: 343.945,
-          },
-          id: "rec8tPxPIlPHMsI6Q",
+    const expectedResult: UpdatedRecord[] = [
+      {
+        createdTime: "2021-03-25T16:53:14.000Z",
+        fields: {
+          "Team Name": "Doggos",
+          Walker: "Betty",
+          Walkers: ["Betty", "Olga"],
+          "Week 1 (km)": 198.43,
+          "Week 2 (km)": 211.945,
+          "Week 3 (km)": 36.9,
+          "Week 4 (km)": 131.23,
+          total: 343.945,
         },
-        {
-          createdTime: "2021-03-25T22:50:22.000Z",
-          fields: {
-            "Team Name": "Doggos",
-            Walker: "Olga",
-            "Week 1 (km)": 98.43,
-            "Week 2 (km)": 101,
-            "Week 3 (km)": 23.45,
-            "Week 4 (km)": 100,
-            total: 123,
-          },
-          id: "recdAbXFcs7FedAoq",
-        },
-      ],
-      orderedTeamData: [
-        {
-          createdTime: "2021-03-25T16:53:14.000Z",
-          fields: {
-            "Team Name": "Doggos",
-            Walker: "Betty",
-            "Week 1 (km)": 198.43,
-            "Week 2 (km)": 211.945,
-            "Week 3 (km)": 36.9,
-            "Week 4 (km)": 131.23,
-            total: 343.945,
-          },
-          id: "rec8tPxPIlPHMsI6Q",
-        },
-      ],
-    };
+        id: "rec8tPxPIlPHMsI6Q",
+      },
+    ];
 
     getLeaderboardMock.mockReturnValue(Promise.resolve(mockResponse));
 

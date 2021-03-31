@@ -1,10 +1,10 @@
-import { Record } from "../gateways/airtable";
 import TableRow from "./TableRow";
 import "./ResultsTable.css";
 import { Table } from "react-bootstrap";
+import { UpdatedRecord } from "../interfaces/record";
 
 interface ResultsTableProps {
-  tableValues: Record[];
+  tableValues: UpdatedRecord[];
 }
 
 const ResultsTable = ({ tableValues }: ResultsTableProps) => {
@@ -27,7 +27,7 @@ const ResultsTable = ({ tableValues }: ResultsTableProps) => {
   );
 };
 
-const generateTableRows = (tableValues: Record[], rows: JSX.Element[]) => {
+const generateTableRows = (tableValues: UpdatedRecord[], rows: JSX.Element[]) => {
   tableValues.forEach((row) => {
     rows.push(
       <TableRow
@@ -38,6 +38,7 @@ const generateTableRows = (tableValues: Record[], rows: JSX.Element[]) => {
           week3: row.fields["Week 3 (km)"],
           week4: row.fields["Week 4 (km)"],
           total: row.fields.total,
+          walkers: row.fields.Walkers
         }}
       />
     );
