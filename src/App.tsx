@@ -6,6 +6,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import getTableValues from "./usecases/getTableValues";
 import { UpdatedRecord } from "./interfaces/record";
+import TotalDistance from "./components/TotalDistance";
 
 const App = () => {
   const [tableValues, setTableValues] = useState<UpdatedRecord[]>([]);
@@ -16,6 +17,11 @@ const App = () => {
       .then((result) => setTableValues(result))
       .then(() => setLoading(false));
   }, []);
+
+  let sumTotal = 0;
+  tableValues.forEach((row) => {
+    sumTotal += row.fields.total;
+  });
 
   if (loading) {
     return (
@@ -45,6 +51,11 @@ const App = () => {
         </Col>
         <Col>
           <h1 className="title">Walking Challenge: April 2021</h1>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <TotalDistance distance={sumTotal} />
         </Col>
       </Row>
       <TopThree tableValues={tableValues} />
