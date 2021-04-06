@@ -1,6 +1,6 @@
 import TableRow from "./TableRow";
 import "./ResultsTable.css";
-import { Table } from "react-bootstrap";
+import { Row, Table } from "react-bootstrap";
 import { UpdatedRecord } from "../interfaces/record";
 
 interface ResultsTableProps {
@@ -15,10 +15,22 @@ const ResultsTable = ({ tableValues }: ResultsTableProps) => {
       <thead>
         <tr className="header-row">
           <th>Team</th>
-          <th>Week 1 (km)</th>
-          <th>Week 2 (km)</th>
-          <th>Week 3 (km)</th>
-          <th>Week 4 (km)</th>
+          <th>
+            <Row>Week 1 (km)</Row>
+            <Row>(1/4/2021 - 9/4/2021)</Row>
+          </th>
+          <th>
+            <Row>Week 2 (km)</Row>
+            <Row>(10/4/2021 - 16/4/2021)</Row>
+          </th>
+          <th>
+            <Row>Week 3 (km)</Row>
+            <Row>(17/4/2021 - 23/4/2021)</Row>
+          </th>
+          <th>
+            <Row>Week 4 (km)</Row>
+            <Row>(24/4/2021 - 30/4/2021)</Row>
+          </th>
           <th>Total (km)</th>
         </tr>
       </thead>
@@ -27,7 +39,10 @@ const ResultsTable = ({ tableValues }: ResultsTableProps) => {
   );
 };
 
-const generateTableRows = (tableValues: UpdatedRecord[], rows: JSX.Element[]) => {
+const generateTableRows = (
+  tableValues: UpdatedRecord[],
+  rows: JSX.Element[]
+) => {
   tableValues.forEach((row) => {
     rows.push(
       <TableRow
@@ -38,7 +53,7 @@ const generateTableRows = (tableValues: UpdatedRecord[], rows: JSX.Element[]) =>
           week3: row.fields["Week 3 (km)"],
           week4: row.fields["Week 4 (km)"],
           total: row.fields.total,
-          walkers: row.fields.Walkers
+          walkers: row.fields.Walkers,
         }}
       />
     );
