@@ -9,6 +9,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     - If the table had been created in a new base, then the environment variable `REACT_APP_BASE_ID` will need to be updated with that base ID.
 - The new table will be accessible at, for example, https://walking-leaderboard.netlify.app/2023/March. 
 
+## Deployment
+
+Deployment is triggered when pushing to the main branch, its deployed using [netlify](https://app.netlify.com/sites/walking-leaderboard/deploys). 
+
 
 ## Development
 
