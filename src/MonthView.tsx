@@ -75,6 +75,18 @@ const MonthView = () => {
           <ResultsTable tableValues={tableValues} />
         </Col>
       </Row>
+      <Row>
+        <Col md={{offset: 10, span:2}}>
+          <a 
+            href="https://github.com/madetech/walking-challenge"
+            target="_blank"
+            rel="noreferrer"
+            style={{"color": "#000"}}
+          >
+            Source Code <i style={{"fontSize":"24px"}} className="fa">&#xf09b;</i>
+          </a>
+        </Col>
+      </Row>
     </Container>
   );
 };
