@@ -17,19 +17,15 @@ const ResultsTable = ({ tableValues }: ResultsTableProps) => {
           <th>Team</th>
           <th>
             <Row>Week 1 (km)</Row>
-            <Row>(1/4/2021 - 9/4/2021)</Row>
           </th>
           <th>
             <Row>Week 2 (km)</Row>
-            <Row>(10/4/2021 - 16/4/2021)</Row>
           </th>
           <th>
             <Row>Week 3 (km)</Row>
-            <Row>(17/4/2021 - 23/4/2021)</Row>
           </th>
           <th>
             <Row>Week 4 (km)</Row>
-            <Row>(24/4/2021 - 30/4/2021)</Row>
           </th>
           <th>Total (km)</th>
         </tr>
