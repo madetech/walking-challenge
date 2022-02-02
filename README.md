@@ -7,6 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Duplicate a current table on the airtable.
     - The name of the new table must have the format MonthYY, for example March23 or November22.
     - If the table had been created in a new base, then the environment variable `REACT_APP_BASE_ID` will need to be updated with that base ID.
+- To point the link at the new table in airtable the environment variable, `REACT_APP_AIRTABLE_LINK`, needs to be updated.
 - The new table will be accessible at, for example, https://walking-leaderboard.netlify.app/2023/March. 
 
 ## Deployment

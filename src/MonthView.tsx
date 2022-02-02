@@ -60,7 +60,7 @@ const MonthView = () => {
         </Col>
         <Col md={2}>
           <a
-            href="https://airtable.com/tbl4avcoqiDB3hTv2/viwWNk8aHvdMW87Xq?blocks=hide"
+            href={process.env.REACT_APP_AIRTABLE_LINK}
             target="_blank"
             rel="noreferrer"
             className="h4"
