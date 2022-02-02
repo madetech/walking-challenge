@@ -33,7 +33,7 @@ const MonthView = () => {
         <img src={logo} alt="Made Tech Logo" className="logo" />
       </Col>
       <Col>
-        <h1 className="title">Walking Challenge: {month} {year}</h1>
+        <h1 style={{"textAlign": "right"}} className="title">Walking Challenge: {month} {year}</h1>
       </Col>
     </Row>
   )
@@ -55,25 +55,24 @@ const MonthView = () => {
     <Container fluid>
       {header}
       <Row>
-        <Col>
+        <Col md={10}>
           <TotalDistance distance={sumTotal} />
+        </Col>
+        <Col md={2}>
+          <a
+            href="https://airtable.com/tbl4avcoqiDB3hTv2/viwWNk8aHvdMW87Xq?blocks=hide"
+            target="_blank"
+            rel="noreferrer"
+            className="h4"
+          >
+            Add your scores
+          </a>
         </Col>
       </Row>
       <TopThree tableValues={tableValues} />
       <Row>
         <Col>
           <ResultsTable tableValues={tableValues} />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <a
-            href="https://airtable.com/tbl4avcoqiDB3hTv2/viwWNk8aHvdMW87Xq?blocks=hide"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Add your scores
-          </a>
         </Col>
       </Row>
     </Container>
