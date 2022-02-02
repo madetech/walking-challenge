@@ -1,8 +1,16 @@
-# Getting Started with Create React App
+# Made Tech Walking Challenge Leaderboard
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Adding a new month
+
+- Duplicate a current table on the airtable.
+    - The name of the new table must have the format MonthYY, for example March23 or November22.
+    - If the table had been created in a new base, then the environment variable `REACT_APP_BASE_ID` will need to be updated with that base ID.
+- The new table will be accessible at, for example, https://walking-leaderboard.netlify.app/2023/March. 
+
+
+## Development
 
 In the project directory, you can run:
 

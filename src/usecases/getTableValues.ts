@@ -1,9 +1,9 @@
-import { getLeaderboard } from "../gateways/airtable";
+import { getMonthsLeaderboard } from "../gateways/airtable";
 import { Record } from "../gateways/airtable";
 import { UpdatedRecord } from "../interfaces/record";
 
-const getTableValues = async () => {
-  const data = await getLeaderboard();
+const getTableValues = async (year:string, month:string) => {
+  const data = await getMonthsLeaderboard(year, month);
   let teamData: UpdatedRecord[] = [];
   sumTeamData(data, teamData);
 

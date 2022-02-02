@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getLeaderboard } from "./airtable";
+import { getMonthsLeaderboard } from "./airtable";
 
 jest.mock("axios");
 
@@ -70,7 +70,7 @@ describe("airtable", () => {
     mockedAxios.get.mockImplementationOnce(() =>
       Promise.resolve(mockApiResponse)
     );
-    const response = await getLeaderboard();
+    const response = await getMonthsLeaderboard("Feb", "22");
     expect(response).toStrictEqual(expectation);
   });
 });

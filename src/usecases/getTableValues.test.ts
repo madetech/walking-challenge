@@ -1,5 +1,5 @@
 import getTableValues from "./getTableValues";
-import { getLeaderboard, Record } from "../gateways/airtable";
+import { getMonthsLeaderboard, Record } from "../gateways/airtable";
 import { UpdatedRecord } from "../interfaces/record";
 
 jest.mock("../gateways/airtable");
@@ -11,7 +11,7 @@ function mockFunction<T extends (...args: any[]) => any>(
 }
 
 describe("getTableValues", () => {
-  const getLeaderboardMock = mockFunction(getLeaderboard);
+  const getLeaderboardMock = mockFunction(getMonthsLeaderboard);
 
   it("Combines teams successfully", async () => {
     const mockResponse: Record[] = [
@@ -62,7 +62,7 @@ describe("getTableValues", () => {
 
     getLeaderboardMock.mockReturnValue(Promise.resolve(mockResponse));
 
-    const response = await getTableValues();
+    const response = await getTableValues("Feb", "22");
 
     expect(response).toStrictEqual(expectedResult);
   });

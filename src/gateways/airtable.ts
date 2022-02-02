@@ -21,10 +21,10 @@ interface ResponseInterface {
   };
 }
 
-export const getLeaderboard = async () => {
+export const getMonthsLeaderboard = async (year:string,month:string) => {
   try {
     const response: ResponseInterface = await axios.get(
-      "https://api.airtable.com/v0/appXKOOJYsSOmdSwD/Leaderboard",
+      `https://api.airtable.com/v0/${process.env.REACT_APP_BASE_ID}/${month}${year.substring(2)}`,
       {
         headers: {
           Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
